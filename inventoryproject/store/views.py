@@ -246,34 +246,6 @@ def create_po(request):
     p=PO.objects.all()
     return render(request, 'store/create_po.html', {'form': forms, 'po':p})
 
-
-# def create_po(request):
-#     if request.method == 'POST':
-#         ponum =request.POST.get('ponum')
-#         podate=request.POST.get('podate')
-#         s_id=request.POST.get('supplier')
-#         supplier= Supplier.objects.get(id=s_id)
-#         p_id=request.POST.get('pname')
-#         pname= Product.objects.get(id=p_id)
-#         rquantity = request.POST.get('rquantity')
-#         u_id=request.POST.get('uname')
-#         uname= Unit.objects.get(id=u_id)
-#         priceperunit=request.POST.get('priceperunit')
-#         amount=request.POST.get('amount')
-#         deliverystatus=request.POST.get('deliverystatus')
-#         paymentstatus= request.POST.get('paymentstatus')
-#         PO.objects.create(ponum=ponum, podate=podate, supplier=supplier,
-#                           pname=pname, rquantity=rquantity, uname=uname,
-#                           priceperunit=priceperunit,
-#                           amount=amount, deliverystatus=deliverystatus,
-#                           paymentstatus=paymentstatus )
-#         return render(request,'store/create_po.html',
-#                       {'suppliers':Supplier.objects.all(),
-#                        'products':Product.objects.all(),
-#                        'units':Unit.objects.all(),})
-#     p=PO.objects.all()
-#     return render(request, 'store/create_po.html',{'po':p})
-
 # Po search & views
 # @login_required(login_url='login')
 def PoListView(request):
