@@ -1,0 +1,118 @@
+{% extends 'base/base.html' %}
+
+{%load crispy_forms_tags %}
+
+{% block title %}Create PO{% endblock title %}
+
+{% block breadcrumbs %}
+<div class="breadcrumbs bg-secondary">
+    <div class="breadcrumbs-inner bg-warning">
+        <div class="row m-0 bg-warning">
+            <div class="col-sm-4 bg-warning">
+                <div class="page-header float-left bg-warning">
+                    <div class="page-title bg-warning">
+                        <h1>Dashboard</h1>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-8 bg-warning">
+                <div class="page-header float-right bg-warning">
+                    <div class="page-title bg-warning">
+                        <ol class="breadcrumb text-right bg-warning">
+                            <li><a href="#">Dashboard</a></li>
+                            <li><a href="#">PO</a></li>
+                            <li class="active">Create</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock breadcrumbs %}
+
+{% block content %}
+<div class="row">
+    <div class="col-lg-12">
+        <div class="card bg-secondary">
+            <div class="card-header bg-info">
+                <strong class="card-title">Create PO</strong>
+            </div>
+            <div class="card-body">
+                <!-- Credit Card -->
+                <div id="pay-invoice">
+                    <div class="card-body">
+                        <form action="#" method="post" novalidate="novalidate">
+                            {% csrf_token %}
+
+                            {{ form|crispy }}
+
+                            <div class="row">
+                                <div class="col-12">
+                                    <button id="payment-button" type="submit" class="btn btn-lg btn-info btn-block">Create PO</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+            </div>
+        </div> <!-- .card -->
+
+    </div><!--/.col-->
+</div>
+
+<div class="row">
+    <div class="col-xl-12">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="box-title">PO List </h4>
+            </div>
+            <div class="card-body--">
+                <div class="table-stats order-table ov-h">
+                    <table class="table ">
+                        <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Product name</th>
+                            <th>Product code</th>
+                            <th>Quantity</th>
+                            <th>Unit</th>
+                            <th>price per unit</th>
+                            <th>Amount</th>
+                            <th>Delete</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% if po %}
+                        {% for po in po %}
+                        <tr>
+
+                            <td>{{ po.id }}</td>
+                            <td>{{ po.pname }}</td>
+                            <td>{{ po.ponum }}</td>
+                            <td>{{ po.rquantity }}</td>
+                            <td>{{ po.uname }}</td>
+                            <td>{{ po.priceperunit }}</td>
+                            <td>{{ po.amount }}</td>
+                            <td>
+                                <form action="{% url 'delete-po' po.id %}"
+                                      method="post" >{% csrf_token %}
+                                    <input type="submit" class="btn btn-danger" value="Delete">
+                                </form>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                        {% else %}
+                        <tr><td>No PO Data</td></tr>
+                        {% endif %}
+                        </tbody>
+                    </table>
+                </div> <!-- /.table-stats -->
+            </div>
+        </div> <!-- /.card -->
+    </div>  <!-- /.col-lg-8 -->
+
+
+</div>
+{% endblock content %}

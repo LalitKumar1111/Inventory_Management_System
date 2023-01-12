@@ -1,0 +1,70 @@
+
+    {% extends 'base/base.html' %}
+    
+    {%load crispy_forms_tags %}
+
+    {% block title %}Create User{% endblock title %}
+
+    {% block breadcrumbs %}
+    <div class="breadcrumbs bg-secondary">
+        <div class="breadcrumbs-inner bg-warning">
+            <div class="row m-0 bg-warning">
+                <div class="col-sm-4 bg-warning">
+                    <div class="page-header float-left bg-warning">
+                        <div class="page-title bg-warning">
+                            <h1>Dashboard</h1>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-8 bg-warning">
+                    <div class="page-header float-right bg-warning">
+                        <div class="page-title bg-warning">
+                            <ol class="breadcrumb text-right bg-warning">
+                                <li><a href="#">Dashboard</a></li>
+                                <li><a href="#">User</a></li>
+                                <li class="active">Create</li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endblock breadcrumbs %}
+
+    {% block content %}
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="card bg-info">
+                <div class="card-header bg-secondary">
+                    <strong class="card-title">Add User</strong>
+                </div>
+                <div class="card-body">
+                    <!-- Credit Card -->
+                    <div id="pay-invoice">
+                        <div class="card-body">
+                            <form action="#" method="post" novalidate="novalidate">
+                                {% csrf_token %}
+                                {{ form|crispy }}
+
+                             
+                                <button id="payment-button" type="submit" class="btn btn-lg btn-outline-secondary btn-block">Create User</button>
+                            </form>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+    {% endblock content %}
+
+
+
+
+
+
+
+
+
