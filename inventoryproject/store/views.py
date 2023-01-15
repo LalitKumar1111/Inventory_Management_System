@@ -102,7 +102,6 @@ def delete_department(request, id):
 
 # Category
 # Create category
-# @login_required(login_url='login')
 def create_category(request):
 
     if request.method== 'POST':
@@ -121,7 +120,6 @@ def create_category(request):
 
 
 # category views
-# @login_required(login_url='login')
 def CategoryListView(request):
     c=Category.objects.all()
     u= Unit.objects.all()
@@ -172,7 +170,6 @@ def delete_unit(request, id):
 
 # Product
 # Product create
-# @login_required(login_url='login')
 
 def create_product(request):
     forms = ProductForm()
@@ -192,7 +189,6 @@ def create_product(request):
 
 
 # Product views
-# @login_required(login_url='login')
 def ProductListView(request):
     if request.method== 'POST':
         name=request.POST.get('name')
@@ -232,7 +228,6 @@ def delete_product(request, id):
 
 # PO
 # Po create
-# @login_required(login_url='login')
 def create_po(request):
     forms = POForm()
     if request.method == 'POST':
@@ -247,7 +242,6 @@ def create_po(request):
     return render(request, 'store/create_po.html', {'form': forms, 'po':p})
 
 # Po search & views
-# @login_required(login_url='login')
 def PoListView(request):
     if request.method== 'POST':
         ponum=request.POST.get('ponum')
@@ -282,8 +276,6 @@ def delete_po(request,id):
 
 # USER
 # User views
-# @login_required(login_url='login')
-
 def create_user(request):
     forms = UserForm()
     if request.method == 'POST':
@@ -299,7 +291,6 @@ def create_user(request):
 
 
 # User search & views
-# @login_required(login_url='login')
 def UserListView(request):
     if request.method== 'POST':
         email = request.POST.get('email')
@@ -333,8 +324,6 @@ def delete_user(request, id):
 
 #SO
 # So create
-# @login_required(login_url='login')
-
 
 def create_so(request):
     forms = SOForm()
@@ -351,7 +340,6 @@ def create_so(request):
 
 
 # So views
-# @login_required(login_url='login')
 def SoListView(request):
     if request.method== 'POST':
         sonum=request.POST.get('sonum')
